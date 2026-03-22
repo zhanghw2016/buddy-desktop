@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
     
-    # 数据库配置
-    DATABASE_URL: str = "postgresql://buddy_desktop:zhu88jie@172.31.3.199:5432/buddy_dashboard"
+    # 数据库配置（本地 SQLite）
+    DATABASE_URL: str = "sqlite:///./buddy_dashboard.db"
     
     # Redis 配置
     REDIS_URL: str = "redis://172.31.3.199:6379/0"

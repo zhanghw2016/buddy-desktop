@@ -14,7 +14,7 @@ class Message(BaseModel):
     receiver = Column(String(64), nullable=False, index=True, comment='接收者agent_id')
     content = Column(Text, nullable=False, comment='消息内容')
     type = Column(Enum(MessageType), nullable=False, comment='消息类型')
-    metadata = Column(JSON, default=dict, comment='元数据')
+    message_metadata = Column(JSON, default=dict, comment='消息元数据')  # 改名为 message_metadata
     read = Column(String(10), default='unread', comment='已读状态')
     
     def __repr__(self):
