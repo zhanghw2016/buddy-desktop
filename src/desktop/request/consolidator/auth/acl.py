@@ -1,0 +1,356 @@
+
+from constants import (
+    CHANNEL_API,
+    CHANNEL_SESSION,
+    CHANNEL_INTERNAL,
+    CHECK_PLATFROM,
+    ADMIN_ROLES,
+    ALL_ROLES,
+    ALL_PLATFORMS,
+
+    # auth service
+    ACTION_VDI_DESCRIBE_AUTH_SERVICES,
+    ACTION_VDI_CREATE_AUTH_SERVICE,
+    ACTION_VDI_MODIFY_AUTH_SERVICE_ATTRIBUTES,
+    ACTION_VDI_DELETE_AUTH_SERVICES,
+    ACTION_VDI_ADD_AUTH_SERVICE_TO_ZONE,
+    ACTION_VDI_REMOVE_AUTH_SERVICE_FROM_ZONES,
+    ACTION_VDI_REFRESH_AUTH_SERVICE,
+    ACTION_VDI_CHECK_AUTH_SERVICE_OUS,
+
+    # auth user
+    ACTION_VDI_DESCRIBE_AUTH_USERS,
+    ACTION_VDI_CREATE_AUTH_USER,
+    ACTION_VDI_DELETE_AUTH_USERS,
+    ACTION_VDI_MODIFY_AUTH_USER_ATTRIBUTES,
+    ACTION_VDI_MODIFY_AUTH_USER_PASSWORD,
+    ACTION_VDI_RESET_AUTH_USER_PASSWORD,
+    ACTION_VDI_IMPORT_AUTH_USERS,
+
+    # org unit
+    ACTION_VDI_DESCRIBE_AUTH_OUS,
+    ACTION_VDI_CREATE_AUTH_OU,
+    ACTION_VDI_DELETE_AUTH_OU,
+    ACTION_VDI_MODIFY_AUTH_OU_ATTRIBUTES,
+    ACTION_VDI_CHANGE_AUTH_USER_IN_OU,
+
+    # user group
+    ACTION_VDI_DESCRIBE_AUTH_USER_GROUPS,
+    ACTION_VDI_CREATE_AUTH_USER_GROUP,
+    ACTION_VDI_MODIFY_AUTH_USER_GROUP_ATTRIBUTES,
+    ACTION_VDI_DELETE_AUTH_USER_GROUPS,
+    ACTION_VDI_ADD_AUTH_USER_TO_USER_GROUP,
+    ACTION_VDI_REMOVE_AUTH_USER_FROM_USER_GROUP,
+    ACTION_VDI_RENAME_AUTH_USER_DN,
+    ACTION_VDI_SET_AUTH_USER_STATUS,
+    # radius
+    ACTION_VDI_DESCRIBE_RADIUS_SERVICES,
+    ACTION_VDI_CREATE_RADIUS_SERVICE,
+    ACTION_VDI_MODIFY_RADIUS_SERVICE_ATTRIBUTES,
+    ACTION_VDI_DELETE_RADIUS_SERVICES,
+    ACTION_VDI_ADD_AUTH_RADIUS_USERS,
+    ACTION_VDI_REMOVE_AUTH_RADIUS_USERS,
+    ACTION_VDI_MODIFY_RADIUS_USER_ATTRIBUTES,
+    ACTION_VDI_CHECK_RADIUS_TOKEN,
+    # password pormpt
+    ACTION_VDI_CREATE_PASSWORD_PROMPT_QUESTION,
+    ACTION_VDI_MODIFY_PASSWORD_PROMPT_QUESTION,
+    ACTION_VDI_DELETE_PASSWORD_PROMPT_QUESTION,
+    ACTION_VDI_DESCRIBE_PASSWORD_PROMPT_QUESTION,
+    ACTION_VDI_CREATE_PASSWORD_PROMPT_ANSWER,
+    ACTION_VDI_MODIFY_PASSWORD_PROMPT_ANSWER,
+    ACTION_VDI_DELETE_PASSWORD_PROMPT_ANSWER,
+    ACTION_VDI_CHECK_PASSWORD_PROMPT_ANSWER,
+    ACTION_VDI_DESCRIBE_PASSWORD_PROMPT_HAVE_ANSWER,
+    ACTION_VDI_DESCRIBE_HAVE_PASSWORD_ANSWER_USERS,
+    ACTION_VDI_IGNORE_PASSWORD_PROMPT_QUESTION
+)
+
+AUTH_API_ACL = {
+              # auth service
+              ACTION_VDI_DESCRIBE_AUTH_SERVICES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_AUTH_SERVICE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_AUTH_SERVICE_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_AUTH_SERVICES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_ADD_AUTH_SERVICE_TO_ZONE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_REMOVE_AUTH_SERVICE_FROM_ZONES:{
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_REFRESH_AUTH_SERVICE:{
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHECK_AUTH_SERVICE_OUS:{
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              # auth user
+              ACTION_VDI_DESCRIBE_AUTH_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_AUTH_USER: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_AUTH_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_AUTH_USER_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_AUTH_USER_PASSWORD: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_RESET_AUTH_USER_PASSWORD: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_IMPORT_AUTH_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              # auth ou
+              ACTION_VDI_DESCRIBE_AUTH_OUS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_AUTH_OU: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_AUTH_OU: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_AUTH_OU_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHANGE_AUTH_USER_IN_OU: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              # auth user group
+              ACTION_VDI_DESCRIBE_AUTH_USER_GROUPS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_AUTH_USER_GROUP: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_AUTH_USER_GROUP_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_AUTH_USER_GROUPS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_ADD_AUTH_USER_TO_USER_GROUP: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_REMOVE_AUTH_USER_FROM_USER_GROUP: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_RENAME_AUTH_USER_DN: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_SET_AUTH_USER_STATUS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_RADIUS_SERVICES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_RADIUS_SERVICE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_RADIUS_SERVICE_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_RADIUS_SERVICES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_ADD_AUTH_RADIUS_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_REMOVE_AUTH_RADIUS_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_RADIUS_USER_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHECK_RADIUS_TOKEN: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_PASSWORD_PROMPT_QUESTION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_PASSWORD_PROMPT_QUESTION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_PASSWORD_PROMPT_QUESTION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_PASSWORD_PROMPT_QUESTION: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_PASSWORD_PROMPT_ANSWER: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_PASSWORD_PROMPT_ANSWER: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_PASSWORD_PROMPT_ANSWER: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHECK_PASSWORD_PROMPT_ANSWER: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_PASSWORD_PROMPT_HAVE_ANSWER: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_HAVE_PASSWORD_ANSWER_USERS: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_IGNORE_PASSWORD_PROMPT_QUESTION: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              }

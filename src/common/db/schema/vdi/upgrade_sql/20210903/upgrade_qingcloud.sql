@@ -1,0 +1,1 @@
+update system_custom_config set item_value=5 where item_key='badPwdCount';

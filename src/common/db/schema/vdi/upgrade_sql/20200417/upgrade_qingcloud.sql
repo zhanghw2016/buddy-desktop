@@ -1,0 +1,1 @@
+ALTER TABLE security_policy ADD COLUMN is_default integer DEFAULT 0 NOT NULL;

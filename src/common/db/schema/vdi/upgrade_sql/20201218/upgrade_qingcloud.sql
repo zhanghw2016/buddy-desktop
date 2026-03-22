@@ -1,0 +1,1 @@
+alter table delivery_group add column desktop_hide_mode integer DEFAULT 0 NOT NULL;

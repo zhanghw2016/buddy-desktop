@@ -1,0 +1,1 @@
+ALTER TABLE auth_service ADD COLUMN modify_password integer DEFAULT 0 NOT NULL;

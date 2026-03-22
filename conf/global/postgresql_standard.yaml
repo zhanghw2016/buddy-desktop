@@ -1,0 +1,6 @@
+# PostgreSQL conf
+'vdi':
+  host: 'pgpool0'
+  user: 'yunify'
+  password: '0kK2jr7JUCiHB2t6YVhhTw=='
+

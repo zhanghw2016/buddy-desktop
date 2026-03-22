@@ -1,0 +1,1 @@
+ALTER TABLE zone_connection RENAME host_url TO host_ip;

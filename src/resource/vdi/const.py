@@ -1,0 +1,23 @@
+
+# job action
+JOB_ACTIONS =[
+
+]
+
+DESCRIBE_ACTIONS =[
+
+]
+NO_JOB_RES = "no_job"
+
+# resource job interval
+JOB_INTERVAL_5S = 5
+JOB_INTERVAL_3S = 3
+JOB_INTERVAL_60S = 60
+JOB_INTERVAL_20S = 20
+# retry time
+RES_ACTION_RETRIES = 6
+RES_ACTION_RETRY_INTERVAL = 10
+# job timeout
+CHECK_JOB_INTERVAL = 3
+WAIT_JOB_TIMEOUT = 1800
+DESK_RESOURCE_JOB_LOCK='desk_resource_job'

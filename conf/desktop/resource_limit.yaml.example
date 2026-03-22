@@ -1,0 +1,12 @@
+cpu_cores: ''
+memory_range: ''
+cpu_memory_pairs: ''
+
+instance_class: ''
+disk_size: ''
+supported_gpu: ''
+place_group: ''
+max_disk_count: ''
+desktop_count_per_group: ''
+default_passwd: ''
+ivshmem: ''

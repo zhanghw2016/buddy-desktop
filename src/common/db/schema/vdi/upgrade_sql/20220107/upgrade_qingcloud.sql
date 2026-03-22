@@ -1,0 +1,1 @@
+UPDATE workflow_service_action_info SET result_params = '["desktops"]' where api_action= 'DeleteDesktops' 

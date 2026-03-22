@@ -1,0 +1,29 @@
+# access key info
+qy_access_key_id: "RITZSTCUOYKMSUVIXSDB"
+qy_secret_access_key: "DH1EVjnPEU3udrc5NtEd1eS5ygTrqj66raZ6qD6R"
+
+# message expired time in seconds
+msg_time_out: 3600
+
+# http socket timeout
+http_socket_timeout: 10
+
+# retry time after message send failed
+retry_time: 3
+
+# remote host
+host: "localhost"
+
+# remote host port, 443 for https
+port: 7776
+
+# protocol, "http" or "https"
+protocol: "http"
+
+owner: 'admin'
+
+console_id: 'admin'
+
+# zone
+zone: "desktop1"
+

@@ -1,0 +1,119 @@
+
+from constants import (
+    CHANNEL_API,
+    CHANNEL_SESSION,
+    CHANNEL_INTERNAL,
+    CHECK_PLATFROM,
+    ADMIN_ROLES,
+    ALL_PLATFORMS,
+    ALL_ROLES,
+    ACTION_VDI_DESCRIBE_ZONE_USERS,
+    ACTION_VDI_ENABLE_ZONE_USERS,
+    ACTION_VDI_DISABLE_ZONE_USERS,
+    ACTION_VDI_MODIFY_ZONE_USER_ROLE,
+    ACTION_VDI_GET_ZONE_USER_ADMINS,
+    ACTION_VDI_MODIFY_ZONE_USER_SCOPE,
+    ACTION_VDI_DESCRIBE_ZONE_USER_SCOPE,
+    ACTION_VDI_DESCRIBE_API_ACTIONS,
+    ACTION_VDI_DESCRIBE_ZONE_USER_LOGIN_RECORD,
+    ACTION_VDI_DESCRIBE_USER_DESKTOP_SESSION,
+    ACTION_VDI_LOGOUT_USER_DESKTOP_SESSION,
+    ACTION_VDI_MODIFY_USER_DESKTOP_SESSION,
+    ACTION_VDI_CREATE_DESKTOP_USER_SESSION,
+    ACTION_VDI_DELETE_DESKTOP_USER_SESSION,
+    ACTION_VDI_CHECK_DESKTOP_USER_SESSION,
+
+)
+
+DESKTOP_USER_API_ACL = {
+              ACTION_VDI_DESCRIBE_ZONE_USERS: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_ENABLE_ZONE_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DISABLE_ZONE_USERS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_ZONE_USER_ROLE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_GET_ZONE_USER_ADMINS: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_ZONE_USER_SCOPE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_ZONE_USER_SCOPE: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_API_ACTIONS: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_ZONE_USER_LOGIN_RECORD: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_USER_DESKTOP_SESSION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_LOGOUT_USER_DESKTOP_SESSION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_USER_DESKTOP_SESSION: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_DESKTOP_USER_SESSION: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_DESKTOP_USER_SESSION: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHECK_DESKTOP_USER_SESSION: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              }

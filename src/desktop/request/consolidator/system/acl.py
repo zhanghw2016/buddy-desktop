@@ -1,0 +1,96 @@
+
+from constants import (
+    CHANNEL_API,
+    CHANNEL_SESSION,
+    CHANNEL_INTERNAL,
+    CHECK_PLATFROM,
+    ALL_PLATFORMS,
+    USER_ROLE_GLOBAL_ADMIN,
+    ACTION_VDI_DESCRIBE_NOTICE_PUSHS,
+    ACTION_VDI_CREATE_NOTICE_PUSH,
+    ACTION_VDI_MODIFY_NOTICE_PUSH_ATTRIBUTES,
+    ACTION_VDI_DELETE_NOTICE_PUSHS,
+    ACTION_VDI_MODIFY_NOTICE_PUSH_ZONE_USER,
+    ACTION_VDI_SET_USER_NOTICE_READ,
+
+    # software
+    ACTION_VDI_DESCRIBE_SOFTWARES,
+    ACTION_VDI_UPLOAD_SOFTWARES,
+    ACTION_VDI_DOWNLOAD_SOFTWARES,
+    ACTION_VDI_DELETE_SOFTWARES,
+    ACTION_VDI_CHECK_SOFTWARE_VNAS_NODE_DIR,
+)
+
+from constants import (
+    ADMIN_ROLES,
+    ALL_ROLES
+)
+
+SYSTEM_API_ACL = {
+              ACTION_VDI_DESCRIBE_NOTICE_PUSHS: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CREATE_NOTICE_PUSH: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_NOTICE_PUSH_ATTRIBUTES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_NOTICE_PUSHS: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_MODIFY_NOTICE_PUSH_ZONE_USER: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_SET_USER_NOTICE_READ: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DESCRIBE_SOFTWARES: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_UPLOAD_SOFTWARES: {
+                  CHANNEL_API: ADMIN_ROLES,
+                  CHANNEL_SESSION: ADMIN_ROLES,
+                  CHANNEL_INTERNAL: ADMIN_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DOWNLOAD_SOFTWARES: {
+                  CHANNEL_API: ALL_ROLES,
+                  CHANNEL_SESSION: ALL_ROLES,
+                  CHANNEL_INTERNAL: ALL_ROLES,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_DELETE_SOFTWARES: {
+                  CHANNEL_API: USER_ROLE_GLOBAL_ADMIN,
+                  CHANNEL_SESSION: USER_ROLE_GLOBAL_ADMIN,
+                  CHANNEL_INTERNAL: USER_ROLE_GLOBAL_ADMIN,
+                  CHECK_PLATFROM: ALL_PLATFORMS
+               },
+              ACTION_VDI_CHECK_SOFTWARE_VNAS_NODE_DIR: {
+                CHANNEL_API: ALL_ROLES,
+                CHANNEL_SESSION: ALL_ROLES,
+                CHANNEL_INTERNAL: ALL_ROLES,
+                CHECK_PLATFROM: ALL_PLATFORMS
+                },
+              }

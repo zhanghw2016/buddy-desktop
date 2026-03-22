@@ -1,0 +1,2 @@
+# Memcached conf
+mc_hosts: 'memcached_host:11211'

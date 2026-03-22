@@ -1,0 +1,30 @@
+platform: 'qingcloud' # qingcloud, citrix
+deploy: 'standard' # express, standard, appcenter
+zones:
+  "zone_id1":
+    user_id: ''
+    qy_access_key_id: ""
+    qy_secret_access_key: ""
+    host: ""
+    port: 80
+    protocol: "http"
+    http_socket_timeout: 120
+    citrix:
+      host: "api.citrixdesktop.com"
+      port: 10080
+      protocol: "http"
+      http_socket_timeout: 120
+
+  "zone_id2":
+    user_id: ''
+    qy_access_key_id: ""
+    qy_secret_access_key: ""
+    host: ""
+    port: 80
+    protocol: "http"
+    http_socket_timeout: 120
+    citrix:
+      host: "api.citrixdesktop.com"
+      port: 10080
+      protocol: "http"
+      http_socket_timeout: 120

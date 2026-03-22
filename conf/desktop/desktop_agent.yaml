@@ -1,0 +1,11 @@
+'chk_interval':
+  'postgresql': 60
+  'qingcloud_server': 60
+  'auth_server': 60
+  'clean_connect_file': 3600
+  'license': 3600
+  'sync_zone_info': 60
+  'push_syslog': 300
+  'clean_up_log': 600
+  'refresh_desktop_instance': 600
+  'vnas_server': 60

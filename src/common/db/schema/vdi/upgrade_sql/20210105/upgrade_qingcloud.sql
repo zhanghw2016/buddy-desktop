@@ -1,0 +1,1 @@
+INSERT INTO component_version(component_id,component_name,component_type,version,filename,description) VALUES ('compvn-default-qingcloud-file-share-tools','qingcloud_file_share_tools','file_share_tools', '2.1.0-1','qingcloud-file-share-tools-upgrade-2.1.0-202101051201-1-g9c07c72.exe','qingcloud_file_share_tools upgrade package');
