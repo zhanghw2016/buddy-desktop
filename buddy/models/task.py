@@ -22,7 +22,8 @@ class Task(BaseModel):
     due_date = Column(DateTime, comment='截止日期')
     tags = Column(JSON, default=list, comment='标签')
     dependencies = Column(JSON, default=list, comment='依赖任务ID列表')
-    metadata = Column(JSON, default=dict, comment='元数据')
+    task_metadata = Column(JSON, default=dict, comment='任务元数据')  # 改名为 task_metadata
     
     def __repr__(self):
         return f"<Task(id={self.id}, title={self.title}, status={self.status})>"
+

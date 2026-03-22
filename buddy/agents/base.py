@@ -102,7 +102,7 @@ class BaseAgent(ABC):
             task.status = TaskStatus.COMPLETED
             task.updated_at = datetime.utcnow()
             if output:
-                task.metadata = {**task.metadata, **{'output': output}}
+                task.task_metadata = {**task.task_metadata, **{'output': output}}  # 使用 task_metadata
             self.db.commit()
             
             # 清空当前任务

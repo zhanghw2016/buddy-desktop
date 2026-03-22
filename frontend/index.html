@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDI 桌面管理系统 - 登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 48px;
+            width: 420px;
+            max-width: 90%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header .logo {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .login-header h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .remember-forgot input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .remember-forgot a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .demo-info {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .demo-info h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .demo-info p {
+            margin: 4px 0;
+        }
+
+        .demo-info strong {
+            color: #667eea;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 16px;
+            color: #667eea;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .error-message {
+            color: #f5222d;
+            font-size: 14px;
+            margin-top: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo">V</div>
+            <h1>VDI 桌面管理系统</h1>
+            <p>虚拟桌面基础架构管理平台</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码" required>
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" name="remember"> 记住我
+                </label>
+                <a href="#">忘记密码？</a>
+            </div>
+
+            <button type="submit" class="login-button">登 录</button>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="loading" id="loading">登录中...</div>
+        </form>
+
+        <div class="demo-info">
+            <h3>演示账号</h3>
+            <p><strong>管理员：</strong> admin / admin123</p>
+            <p><strong>普通用户：</strong> user / user123</p>
+            <p style="margin-top: 8px; color: #999;">当前为演示模式，无需后端验证</p>
+        </div>
+    </div>
+
+    <script>
+        // 演示用户数据
+        const demoUsers = [
+            { username: 'admin', password: 'admin123', role: 'admin', name: '系统管理员' },
+            { username: 'user', password: 'user123', role: 'user', name: '普通用户' },
+            { username: '林经理', password: '123456', role: 'pm', name: '林经理（PM）' },
+            { username: '秦设计', password: '123456', role: 'ui', name: '秦设计（UI）' },
+            { username: '张开发', password: '123456', role: 'backend', name: '张开发（Backend）' },
+            { username: '王测试', password: '123456', role: 'qa', name: '王测试（QA）' }
+        ];
+
+        // 表单提交
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // 隐藏错误消息
+            errorMessage.classList.remove('show');
+            errorMessage.textContent = '';
+
+            // 显示加载状态
+            loading.classList.add('show');
+
+            // 模拟登录延迟
+            setTimeout(() => {
+                // 验证用户
+                const user = demoUsers.find(u => u.username === username && u.password === password);
+
+                if (user) {
+                    // 登录成功
+                    console.log('登录成功:', user);
+
+                    // 保存用户信息到 localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+
+                    // 显示成功消息
+                    alert(`登录成功！欢迎 ${user.name}`);
+
+                    // 跳转到看板页面（后续开发）
+                    // window.location.href = '/dashboard.html';
+                    
+                    // 暂时提示
+                    loading.textContent = '登录成功！即将跳转到看板系统...';
+                    loading.style.color = '#52c41a';
+                } else {
+                    // 登录失败
+                    loading.classList.remove('show');
+                    errorMessage.textContent = '用户名或密码错误';
+                    errorMessage.classList.add('show');
+                }
+            }, 1000);
+        });
+
+        // 页面加载时检查是否已登录
+        window.addEventListener('load', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                document.getElementById('username').value = user.username;
+            }
+        });
+    </script>
+</body>
+</html>

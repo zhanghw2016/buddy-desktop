@@ -2,7 +2,7 @@
 系统配置
 """
 import os
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -37,3 +37,4 @@ class Settings(BaseSettings):
 
 # 全局配置实例
 settings = Settings()
+
