@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Buddy Dashboard API
+  buddy-api:
+    build: .
+    container_name: buddy-dashboard
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://buddy_desktop:zhu88jie@172.31.3.199:5432/buddy_desktop
+      - APP_NAME=Buddy Dashboard
+    volumes:
+      - ./buddy:/app/buddy
+      - ./logs:/app/logs
+    networks:
+      - buddy-network
+
+  # PostgreSQL 数据库（可选，使用现有数据库）
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: buddy_dashboard
+  #     POSTGRES_USER: buddy
+  #     POSTGRES_PASSWORD: buddy123
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5433:5432"
+
+networks:
+  buddy-network:
+    driver: bridge
+
+# volumes:
+#   postgres-data:
