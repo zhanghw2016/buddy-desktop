@@ -1,0 +1,15 @@
+[Unit]
+Description=BuddyDesktop项目管理看板
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/buddy-dashboard
+Environment="PATH=/opt/buddy-dashboard/venv/bin"
+ExecStart=/opt/buddy-dashboard/venv/bin/python -m buddy.main
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

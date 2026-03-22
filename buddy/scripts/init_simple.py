@@ -6,7 +6,8 @@ import os
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
 
-from buddy.core.database import SessionLocal
+from buddy.core.database import SessionLocal, engine
+from buddy.models.base import Base
 from buddy.models import (
     Project, Task, Agent, Workflow, Message,
     ProjectStatus, TaskType, TaskPriority, TaskStatus,
@@ -18,6 +19,11 @@ from datetime import datetime, timedelta
 print("=" * 60)
 print("Buddy 看板系统 - 模拟数据初始化")
 print("=" * 60)
+
+# 创建所有表
+print("\n创建数据库表...")
+Base.metadata.create_all(bind=engine)
+print("✓ 数据库表创建完成")
 
 db = SessionLocal()
 
