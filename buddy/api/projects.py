@@ -7,7 +7,7 @@ from typing import List
 import uuid
 
 from buddy.core.database import get_db
-from buddy.models import Project, ProjectStatus
+from buddy.models import Project, ProjectStatus, Task, TaskStatus
 from pydantic import BaseModel
 
 
@@ -33,16 +33,46 @@ class ProjectResponse(BaseModel):
     description: str
     status: str
     owner: str
+    progress: int = 0  # 添加进度字段
+    task_count: int = 0  # 添加任务数字段
     
     class Config:
         orm_mode = True
+
+
+def calculate_project_progress(db: Session, project_id: str) -> tuple:
+    """计算项目进度和任务数"""
+    tasks = db.query(Task).filter(Task.project_id == project_id).all()
+    if not tasks:
+        return 0, 0
+    
+    total = len(tasks)
+    completed = len([t for t in tasks if t.status == TaskStatus.COMPLETED])
+    progress = int((completed / total) * 100) if total > 0 else 0
+    
+    return progress, total
 
 
 @router.get("/", response_model=List[ProjectResponse])
 def get_projects(db: Session = Depends(get_db)):
     """获取项目列表"""
     projects = db.query(Project).all()
-    return projects
+    
+    # 为每个项目计算进度
+    result = []
+    for project in projects:
+        progress, task_count = calculate_project_progress(db, str(project.id))
+        result.append(ProjectResponse(
+            id=str(project.id),
+            name=project.name,
+            description=project.description or "",
+            status=project.status.value if project.status else "planning",
+            owner=project.owner or "",
+            progress=progress,
+            task_count=task_count
+        ))
+    
+    return result
 
 
 @router.get("/{project_id}", response_model=ProjectResponse)
@@ -51,7 +81,18 @@ def get_project(project_id: str, db: Session = Depends(get_db)):
     project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
-    return project
+    
+    progress, task_count = calculate_project_progress(db, project_id)
+    
+    return ProjectResponse(
+        id=str(project.id),
+        name=project.name,
+        description=project.description or "",
+        status=project.status.value if project.status else "planning",
+        owner=project.owner or "",
+        progress=progress,
+        task_count=task_count
+    )
 
 
 @router.post("/", response_model=ProjectResponse)
