@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from buddy.models import Agent as AgentModel, Task, Message
 from buddy.models.enums import AgentStatus, AgentRole, TaskStatus, MessageType
 from buddy.core.config import settings
+from buddy.services.agent_bridge import get_bridge
 
 
 class BaseAgent(ABC):
@@ -31,6 +32,9 @@ class BaseAgent(ABC):
         self.name = self.agent_info.name
         self.capabilities = self.agent_info.capabilities
         self.config = self.agent_info.config
+        
+        # AI 桥接器 - 连接到当前会话的 AI
+        self.ai_bridge = get_bridge(db)
         
     def _load_agent_info(self) -> AgentModel:
         """从数据库加载 Agent 信息"""
@@ -108,6 +112,53 @@ class BaseAgent(ABC):
             # 发送任务完成消息
             # 这里可以发送给 PM Agent
             pass
+    
+    async def request_ai_analysis(self, task: Task, analysis_type: str) -> Dict[str, Any]:
+        """
+        请求 AI 分析（使用桥接器连接到我）
+        
+        Args:
+            task: 任务对象
+            analysis_type: 分析类型 (requirement/design/code/test/bug)
+            
+        Returns:
+            请求 ID 和状态
+        """
+        result = await self.ai_bridge.request_analysis(
+            agent_id=self.agent_id,
+            task=task,
+            analysis_type=analysis_type
+        )
+        
+        print(f"[{self.name}] 已提交 AI 分析请求: {result['request_id']}")
+        return result
+    
+    async def get_ai_response(self, request_id: str, timeout: int = 60) -> Optional[Dict[str, Any]]:
+        """
+        获取 AI 响应（轮询）
+        
+        Args:
+            request_id: 请求 ID
+            timeout: 超时时间（秒）
+            
+        Returns:
+            AI 响应内容
+        """
+        import asyncio
+        
+        start_time = datetime.utcnow()
+        
+        while (datetime.utcnow() - start_time).seconds < timeout:
+            response = await self.ai_bridge.get_response(request_id)
+            if response:
+                print(f"[{self.name}] 收到 AI 响应: {request_id}")
+                return response
+            
+            # 等待 2 秒后重试
+            await asyncio.sleep(2)
+        
+        print(f"[{self.name}] AI 响应超时: {request_id}")
+        return None
     
     @abstractmethod
     def process_task(self, task: Task) -> Dict[str, Any]:
